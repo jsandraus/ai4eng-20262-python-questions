@@ -1,0 +1,18 @@
+Caso de uso: Trabajas en salud pública analizando datos de municipios. El dataset tiene variables numéricas con NaN y variables binarias sin NaN. Quieres agrupar municipios con características similares para asignar recursos, pero necesitas imputar solo las columnas numéricas con la mediana antes del clustering. El número de grupos no es fijo; se elige el que maximice la separación usando el índice de Calinski-Harabasz.
+Tu Misión:
+Escribe una función llamada agrupar_municipios(df, cols_numericas, k_valores) que realice lo siguiente:
+
+Usando pandas, seleccione solo cols_numericas del DataFrame.
+Impute los NaN con SimpleImputer(strategy='median') de sklearn.
+Escale los datos resultantes con StandardScaler.
+Para cada k en k_valores, ajuste un KMeans(n_clusters=k, random_state=42, n_init=10) y calcule el índice de Calinski-Harabasz usando calinski_harabasz_score de sklearn.metrics.
+Seleccione el k que maximice dicho índice (en caso de empate, elija el menor k).
+Devuelva un diccionario con:
+
+"best_k": el número óptimo de clusters (int)
+"best_score": el valor del índice Calinski-Harabasz para ese k (float, redondeado a 2 decimales)
+"labels": array de numpy con las etiquetas del mejor modelo
+
+
+
+Librerías: pandas, numpy, sklearn
