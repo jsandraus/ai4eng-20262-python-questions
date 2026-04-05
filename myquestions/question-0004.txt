@@ -1,0 +1,19 @@
+Caso de uso: Eres científico de datos en una fintech evaluando si usar un árbol de decisión o una regresión logística para detectar clientes de alto riesgo. El dataset está balanceado moderadamente, por lo que usas validación cruzada estratificada. En lugar de usar cross_val_score, quieres implementar el bucle manualmente para registrar el F1-score de cada fold individualmente y al final calcular la diferencia de estabilidad (desviación estándar) entre ambos modelos.
+Tu Misión:
+Escribe una función llamada comparar_clasificadores_estratificado(X, y, n_folds=5) que realice lo siguiente:
+
+Instancie dos modelos: LogisticRegression(max_iter=500, random_state=42) y DecisionTreeClassifier(max_depth=5, random_state=42).
+Cree un StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=42).
+Implemente manualmente el bucle de validación cruzada (sin usar cross_val_score). Para cada fold y cada modelo, calcule f1_score(average='weighted', zero_division=0).
+Use numpy para calcular la media y desviación estándar de los F1-scores de cada modelo.
+Devuelva un diccionario con:
+
+"logistic_f1_mean": media del F1 de LogisticRegression (float, 4 decimales)
+"logistic_f1_std": desviación estándar (float, 4 decimales)
+"tree_f1_mean": media del F1 del árbol (float, 4 decimales)
+"tree_f1_std": desviación estándar (float, 4 decimales)
+"modelo_mas_estable": "LogisticRegression" o "DecisionTreeClassifier", el que tenga menor desviación estándar
+
+
+
+Librerías: numpy, sklearn
